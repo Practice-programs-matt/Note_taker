@@ -1,48 +1,55 @@
 
 public class Notes {
 
-	public static void trim(String text)
-	{
-		String wtr = 
+	public static void trim(String text,String head)
+	{ 
+		int og_word_count = wordCount(text);
+		text = text.replaceAll(" and ", " + ");  // adds + symol eveywhere there is an and
+		text = text.replaceAll(" became ", " = ");
 		
-		text = text.replaceAll("(the |by |of |great |and |as |that |,| )" , " ");
-		text = text.replaceAll("  ", " ");
+		int h = 0;
+		while (h<10)
+		{
+			text = text.replaceAll("(the | the |by | also | more | than | observed |moreover | about |admitted | done |who | its | are | it's | of |great| which | at | in | indeed | however | did | his | she | her | as | lay | an | so | not |these | both | between | but | all | marked | mark |most |basis | this |who | quickly | that | or |,| how | had | it | so | noted | in | began | to | asked | it | was |noted | is | just | later | by | theier | they | felt | now | were | especially | be |about | had | close | recently | fellow | on | made | other | specific | a | well | turn | turned | after | long | was | rapid | most )" , " ");
+			text = text.replaceAll("(  |   )", " "); // replaces double and triple spaces with a single space to eliminated odd spacing
+			
+			h++;
+		}
+		
+		System.out.print(head);
 		format(text);
-		System.out.println("the legnth is " + wordCount(text));
-		System.out.println(text);		
+		
+		System.out.println("The original legnth is " + og_word_count);
+		int end_length = wordCount(text);
+		System.out.println("The end legnth is " + end_length);
+		//System.out.println(text);		
 	}
 	
-	public static String format(String text)
+	public static void format(String text)
 	{
-		
-		////////////////////////////
 		int periods = 0;
-		int m = 0;
+
 		int k = 0;
 		int i = 0;
-		int p1 = 0;
-		int p2 = 0;
 		
+		System.out.println();
 		while (k <+ text.length() && i != 5) 
 			{
 			if (k >= text.length()- 2)
 			{
 				i = 5;
 			}
+			else if (text.indexOf(".") == -1)
+			{
+				i = 5;
+			}
 			else
 			{
-				k = text.indexOf("." , k+1);
-				System.out.println(text.substring(k,text.indexOf("." , k+1)));
-				
-				
+				System.out.println("\t-"+ text.substring(k + 1 ,text.indexOf("." , k+1)) );	
+				k = text.indexOf("." , k+1) + 1;
 			}
-			
-			System.out.println(periods);
 			periods++;
 			}
-		////////////////////////////
-		
-		return text;
 	}
 	
 	public static int wordCount(String text)

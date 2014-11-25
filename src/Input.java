@@ -6,12 +6,15 @@ public class Input {
 	public static void input()
 	{
 		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the heading");
+		String head = scan.nextLine();
+		
 		System.out.println("Enter your text >>>>>>>>");
 		String text = scan.nextLine();
 		text = text.toLowerCase();
 		
 		
-		Notes.trim(text);
+		Notes.trim(text,head);
 	
 	}
 	
