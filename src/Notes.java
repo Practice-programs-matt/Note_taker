@@ -1,4 +1,4 @@
-
+// add important people + dates section
 public class Notes {
 
 	public static void trim(String text,String head)
