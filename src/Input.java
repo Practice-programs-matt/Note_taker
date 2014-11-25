@@ -8,34 +8,37 @@ public class Input {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter your text >>>>>>>>");
 		String text = scan.nextLine();
+		text = text.toLowerCase();
 		
-		System.out.println(lastWord(text));
 		
-		
+		Notes.trim(text);
+	
 	}
 	
-	
-	
+
 	public static int wordCount(String text)
 	{
 		int word_count = 0;
 		int length = text.length();
 		int m = 0;
 		int k = 0;
+		int last_word_length =length - lastWord(text);
 		
-		while (k <= length - lastWord(text) )
+		while (k <= length - last_word_length  && m == 0)
 		{
-			System.out.println(lastWord(text));
-			
-			k = text.indexOf(" ", k);
-			k = text.indexOf(" ", k);
-			
-			
-			word_count ++;
-			m ++;
+			if (k == length - last_word_length-1) 
+			{
+				m = 5;// ends loops
+			}
+			else
+			{
+				k = text.indexOf(" ", k + 1);
+			}
+			word_count ++;	
 		}
 		return word_count;
 	}
+	
 	
 	public static int lastWord(String text) // returns starting position of last word in phrase
 	{
